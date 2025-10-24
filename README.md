@@ -1,6 +1,6 @@
-# 🚀 Human Face Count API System
+# 🚀 AI Powered Fleet Management Platform
 
-A distributed real-time system for detecting human faces in vehicle-captured images using **YOLO**, **FastAPI**, **Celery**, and **RabbitMQ** — integrated with a **Java WebSocket backend**, **PostgreSQL**, and **AWS S3** for storage and metadata.
+Below is an original architecture of projects that I will be posting on this repo over time .
 
 ---
 
@@ -8,7 +8,7 @@ A distributed real-time system for detecting human faces in vehicle-captured ima
 
 This architecture enables real-time fleet monitoring, image analysis, and face detection through asynchronous AI processing.
 
-### 📊 Architecture Diagram
+### 📊 Architecture Sequence Diagram
 
 ```mermaid
 sequenceDiagram
@@ -62,6 +62,7 @@ sequenceDiagram
 5. **Face Count API → RabbitMQ:** Queues inference task.  
 6. **Celery Worker → YOLO → S3 + PostgreSQL:** Annotates image, saves results.  
 7. **Face Count API → Backend → Mobile App:** Relays face count + annotated image evidence.  
+7. **Mobile App→ S3:** Serves annotated images as evidence 
 
 ---
 
@@ -75,68 +76,11 @@ sequenceDiagram
 | **Database** | PostgreSQL | Store face count metadata. |
 | **Storage** | AWS S3 | Save annotated images. |
 | **WebSocket Server** | Java | Handle client sessions and stream updates. |
-| **Frontend** | Mobile App | Displays live data and annotated images. |
+| **Frontend** | Flutter - Mobile App | Displays live data and annotated images. |
 | **Language** | Python | Main application logic and inference. |
 
 ---
 
-## 🔧 Environment Variables (`.env`)
-
-```bash
-# Model
-MODEL_PATH=./ai_model/yolov8x-face-lindevs.pt
-
-# Model Augmentation
-IMG_SIZE=1024
-CONF_THRESH=0.1
-IOU_THRESH=0.3
-ALPHA=1.0
-BETA=20
-LOW_CONTRAST_THRESHOLD=25
-LANDMARK_OCCLUSION_THRESHOLD=5
-DARK_THRESHOLD=80
-BRIGHT_THRESHOLD=180
-DEVICE=cpu
-
-# Face detection
-OUTPUT_DIR=./output
-BASE_URL=http://localhost:8000/output
-
-# Logging
-LOGGING_LEVEL=INFO
-
-# Persistence
-SAVE_MODE=cloud # "local" or "cloud"
-
-# S3 Config
-AWS_ACCESS_KEY_ID=EXAMPLEKEY12345
-AWS_SECRET_ACCESS_KEY=EXAMPLESECRETKEY67890
-AWS_REGION=eu-west-2
-S3_BUCKET_NAME=my-facecount-bucket
-
-# PostgreSQL
-DATABASE_URL=postgresql+psycopg2://user:password@localhost:5432/facecountdb
-
-# RabbitMQ
-RABBITMQ_URL=amqp://user:password@localhost:5672/facecount_vhost
-
-# WebSocket Server
-WSS_SERVER=wss://localhost:8083/api/ws
-RETRY_WSS_CONNECT_DELAY=10
-```
-
----
-
-## 🐳 Running with Docker
-
-```bash
-docker build -t human-face-count-api .
-docker run -p 8000:8000 --env-file .env human-face-count-api
-```
-
-This will install all dependencies, expose port **8000**, and run the app via `./run.sh`.
-
----
 
 ## 📜 License
-MIT © 2025 — Neptune AI Labs
+MIT © 2025 — Daniel Moshi
