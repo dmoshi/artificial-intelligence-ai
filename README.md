@@ -1,6 +1,14 @@
 # 🚀 AI Powered Fleet Management Platform
 
-Below is an original architecture of projects that I will be posting on this repo over time .
+> This repository showcases the architecture and components of a complete, production-grade AI-powered vehicle telemetry and human face counting system — from frontend to backend.  
+>  
+> The setup includes a real vehicle equipped with a GPS tracker and camera, streaming live location and image data to a backend system.  
+>  
+> The platform integrates real-time telemetry, AI-based face detection using YOLO, and asynchronous task management with Celery + RabbitMQ.  
+>  
+> Over time, I’ll be publishing each module — including the backend server, AI inference API, and data processing pipeline — with full implementation and deployment details.
+
+
 
 ---
 
