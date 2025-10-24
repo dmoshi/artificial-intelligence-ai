@@ -1,0 +1,17 @@
+# data.yaml
+train: ./faces/images/train
+val: ./faces/images/val
+
+nc: 1
+names: ['face']
+
+augment:
+  hsv_h: 0.005
+  hsv_s: 0.1
+  hsv_v: 0.1
+  degrees: 1.0
+  translate: 0.01
+  scale: 0.05
+  fliplr: 0.2
+  mosaic: 0.0
+  mixup: 0.0

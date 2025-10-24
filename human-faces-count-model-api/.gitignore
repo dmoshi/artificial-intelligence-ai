@@ -1,0 +1,6 @@
+.env
+venv-insight
+output
+ai_model/yolov8x-face.pt
+.DS_Store
+logs/app.log

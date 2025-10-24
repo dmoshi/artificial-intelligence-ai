@@ -1,0 +1,29 @@
+[Unit]
+Description=AI Faces Count FastAPI Service
+After=network.target
+
+[Service]
+# Change this to your actual project directory
+WorkingDirectory=/home/ec2-user/ai-faces-count
+
+# Path to your Python virtual environment and main FastAPI file
+ExecStart=/home/ec2-user/ai-faces-count/venv/bin/uvicorn app:app --host 0.0.0.0 --port 8000
+
+# Load environment variables from .env file
+EnvironmentFile=/home/ec2-user/ai-faces-count/.env
+Environment="PATH=/home/ec2-user/ai-faces-count/venv/bin"
+
+# Run as ec2-user
+User=ec2-user
+Group=ec2-user
+
+# Auto-restart if it crashes
+Restart=always
+RestartSec=5
+
+# Log output to files in the app directory
+StandardOutput=append:/home/ec2-user/ai-faces-count/ai-faces.log
+StandardError=append:/home/ec2-user/ai-faces-count/ai-faces.err
+
+[Install]
+WantedBy=multi-user.target
