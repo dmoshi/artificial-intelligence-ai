@@ -10,8 +10,6 @@
 
 
 
----
-
 ## 🧭 System Architecture Overview
 
 This architecture enables real-time fleet monitoring, image analysis, and face detection through asynchronous AI processing.
